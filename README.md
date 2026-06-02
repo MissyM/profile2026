@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Milena Cabrera Patiño — Portfolio
 
-## Getting Started
+Personal portfolio built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS v4**, with a light/dark theme. Statically exported and deployed to **GitHub Pages**.
 
-First, run the development server:
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build (static export)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm build        # outputs static site to ./out
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Edit the content
 
-## Learn More
+All text — summary, experience, skills, projects, contact — lives in one typed file:
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/data/resume.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Edit that file and the UI updates. No component changes needed for content tweaks.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Add your photo
 
-## Deploy on Vercel
+Drop a square image at:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+public/profile.jpg
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Until then, a styled "MC" initials avatar is shown. To use a different filename,
+update `profile.photo` in `src/data/resume.ts`.
+
+## Update the résumé download
+
+Replace `public/Milena-Cabrera-Resume.pdf` (referenced by `profile.resumeFile`).
+
+## Deploy to GitHub Pages
+
+1. Push this repo to GitHub (recommended name: `MissyM.github.io` for the root URL
+   `https://missym.github.io`).
+2. In the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+3. Every push to `main` runs `.github/workflows/deploy.yml`, which builds and publishes `./out`.
+
+> Deploying to a **project** repo instead (e.g. `github.com/MissyM/portfolio`)?
+> Set `basePath`/`assetPrefix` in `next.config.ts` (see the comment there).
+
+## Project structure
+
+```
+src/
+  app/            # layout, page, globals.css, generated favicon (icon.tsx)
+  components/     # hero, about, experience, skills, work, contact, header, footer, theme
+  data/resume.ts  # all content
+public/           # résumé PDF, .nojekyll, (your profile.jpg)
+```
