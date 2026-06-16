@@ -30,7 +30,7 @@ export type SocialLink = {
 
 export const profile = {
   name: "Milena Cabrera Patiño",
-  role: "Frontend Software Engineer",
+  role: "Software Engineer",
   // Short hero tagline
   tagline:
     "I build scalable, high-performance web and hybrid apps with React, Next.js & TypeScript.",
@@ -49,7 +49,7 @@ export const summary =
   "Frontend Engineer with 8+ years of experience delivering high-quality web and hybrid applications using React.js, JavaScript, and modern development tooling. Adept at creating scalable, maintainable solutions for fintech, education, and mobility. Proven ability to work across multiple repositories and platforms, delivering cross-functional features with strong attention to performance and UX. Experienced in collaborating with multidisciplinary teams and driving frontend strategy for complex ecosystems.";
 
 export const stats: { value: string; label: string }[] = [
-  { value: "8+", label: "Years of experience" },
+  { value: "5+", label: "Years of experience" },
   { value: "33+", label: "Repositories shipped" },
   { value: "3", label: "LATAM markets (CL · BR · AR)" },
   { value: "3", label: "Domains: fintech · edu · mobility" },

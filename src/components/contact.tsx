@@ -19,7 +19,9 @@ export function Contact() {
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
-              href={`mailto:${profile.email}`}
+              href={`https://mail.google.com/mail/?view=cm&to=${profile.email}&su=Laboral%20Offer`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-transform hover:-translate-y-0.5"
             >
               <Mail className="size-4" />
