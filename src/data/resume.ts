@@ -40,13 +40,13 @@ export const profile = {
   githubHandle: "MissyM",
   // Add your LinkedIn URL here when ready, then it shows up automatically.
   linkedin: "",
-  resumeFile: "/Milena-Cabrera-Resume.pdf",
+  resumeFile: "/Milena_Cabrera_Patino_Resume.pdf",
   // Drop a square photo at public/profile.jpg to replace the initials avatar.
   photo: "/profile.jpg",
 };
 
 export const summary =
-  "Frontend Engineer with 8+ years of experience delivering high-quality web and hybrid applications using React.js, JavaScript, and modern development tooling. Adept at creating scalable, maintainable solutions for fintech, education, and mobility. Proven ability to work across multiple repositories and platforms, delivering cross-functional features with strong attention to performance and UX. Experienced in collaborating with multidisciplinary teams and driving frontend strategy for complex ecosystems.";
+  "Frontend Engineer with 5+ years of experience delivering high-quality web and hybrid applications using React.js, JavaScript, and modern development tooling. Adept at creating scalable, maintainable solutions for fintech, education, and mobility. Proven ability to work across multiple repositories and platforms, delivering cross-functional features with strong attention to performance and UX. Experienced in collaborating with multidisciplinary teams and driving frontend strategy for complex ecosystems.";
 
 export const stats: { value: string; label: string }[] = [
   { value: "5+", label: "Years of experience" },
