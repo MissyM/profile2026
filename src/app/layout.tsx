@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/components/language-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { profile, summary } from "@/data/resume";
+import { content } from "@/data/resume";
+
+// Metadata is generated at build time for a static export, so it always
+// uses the default (English) locale regardless of the client-side toggle.
+const { profile, summary } = content.en;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -68,9 +73,11 @@ export default function RootLayout({
           defaultTheme="light"
           disableTransitionOnChange
         >
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
+          <LanguageProvider>
+            <SiteHeader />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

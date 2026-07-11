@@ -1,12 +1,16 @@
+"use client";
+
 import { Section } from "@/components/section";
 import { Reveal } from "@/components/reveal";
-import { skillGroups } from "@/data/resume";
+import { useLanguage } from "@/components/language-provider";
 
 export function Skills() {
+  const { t } = useLanguage();
+
   return (
-    <Section id="skills" index="03" title="Skills">
+    <Section id="skills" index="03" title={t.sections.skills}>
       <div className="grid gap-5 sm:grid-cols-2">
-        {skillGroups.map((group, i) => (
+        {t.skillGroups.map((group, i) => (
           <Reveal key={group.label} delay={(i % 2) * 80}>
             <div className="h-full rounded-2xl border border-border bg-surface p-5">
               <h3 className="text-sm font-semibold text-foreground">

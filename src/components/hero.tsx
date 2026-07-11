@@ -1,9 +1,14 @@
+"use client";
+
 import { ArrowRight, Download, MapPin } from "lucide-react";
 import { Avatar } from "@/components/avatar";
 import { GithubIcon } from "@/components/icons";
-import { profile, stats } from "@/data/resume";
+import { useLanguage } from "@/components/language-provider";
 
 export function Hero() {
+  const { t } = useLanguage();
+  const { profile, stats } = t;
+
   return (
     <section id="top" className="relative overflow-hidden">
       {/* ambient background */}
@@ -24,7 +29,7 @@ export function Hero() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60" />
                 <span className="relative inline-flex size-2 rounded-full bg-green-500" />
               </span>
-              Available for opportunities
+              {t.hero.badge}
             </span>
 
             <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
@@ -47,7 +52,7 @@ export function Hero() {
                 href="#work"
                 className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-transform hover:-translate-y-0.5"
               >
-                View my work
+                {t.hero.viewWork}
                 <ArrowRight className="size-4" />
               </a>
               <a
@@ -56,7 +61,7 @@ export function Hero() {
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-surface-2"
               >
                 <Download className="size-4" />
-                Résumé
+                {t.hero.resume}
               </a>
               <a
                 href={profile.github}

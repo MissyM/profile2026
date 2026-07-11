@@ -1,21 +1,23 @@
+"use client";
+
 import { ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/section";
 import { Reveal } from "@/components/reveal";
-import { projects } from "@/data/resume";
+import { useLanguage } from "@/components/language-provider";
 
 export function Work() {
+  const { t } = useLanguage();
+
   return (
-    <Section id="work" index="04" title="Selected Work">
+    <Section id="work" index="04" title={t.sections.work}>
       <Reveal>
         <p className="-mt-4 mb-8 max-w-2xl text-sm text-muted">
-          Highlights from production work across fintech, education and mobility.
-          Several products are proprietary, so these are summaries rather than
-          live links.
+          {t.work.intro}
         </p>
       </Reveal>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        {projects.map((p, i) => {
+        {t.projects.map((p, i) => {
           const Wrapper = p.href ? "a" : "div";
           return (
             <Reveal key={p.title} delay={(i % 2) * 80}>
@@ -43,12 +45,12 @@ export function Work() {
                   {p.blurb}
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
+                  {p.tags.map((tag) => (
                     <li
-                      key={t}
+                      key={tag}
                       className="rounded-md bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent"
                     >
-                      {t}
+                      {tag}
                     </li>
                   ))}
                 </ul>

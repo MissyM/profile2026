@@ -3,20 +3,18 @@
 import { useEffect, useState } from "react";
 import { Download, Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { profile } from "@/data/resume";
+import { LanguageToggle } from "@/components/language-toggle";
+import { useLanguage } from "@/components/language-provider";
 
-const NAV = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "skills", label: "Skills" },
-  { id: "work", label: "Work" },
-  { id: "contact", label: "Contact" },
-];
+const NAV_IDS = ["about", "experience", "skills", "work", "contact"] as const;
 
 export function SiteHeader() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
+
+  const nav = NAV_IDS.map((id) => ({ id, label: t.nav[id] }));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -26,7 +24,7 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    const sections = NAV.map((n) => document.getElementById(n.id)).filter(
+    const sections = NAV_IDS.map((id) => document.getElementById(id)).filter(
       (el): el is HTMLElement => el !== null,
     );
     const observer = new IntersectionObserver(
@@ -58,7 +56,7 @@ export function SiteHeader() {
         </a>
 
         <nav className="hidden items-center gap-1 md:flex">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -75,17 +73,18 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <a
-            href={profile.resumeFile}
+            href={t.profile.resumeFile}
             download
             className="hidden items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-surface-2 sm:inline-flex"
           >
             <Download className="size-4" />
-            Resume
+            {t.header.resume}
           </a>
+          <LanguageToggle />
           <ThemeToggle />
           <button
             type="button"
-            aria-label="Toggle menu"
+            aria-label={t.header.toggleMenu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             className="inline-flex size-9 items-center justify-center rounded-full border border-border bg-surface text-foreground md:hidden"
@@ -98,7 +97,7 @@ export function SiteHeader() {
       {open && (
         <nav className="border-t border-border bg-background md:hidden">
           <div className="mx-auto flex max-w-5xl flex-col px-5 py-2 sm:px-8">
-            {NAV.map((item) => (
+            {nav.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
@@ -109,13 +108,13 @@ export function SiteHeader() {
               </a>
             ))}
             <a
-              href={profile.resumeFile}
+              href={t.profile.resumeFile}
               download
               onClick={() => setOpen(false)}
               className="mt-1 inline-flex items-center gap-1.5 rounded-lg px-2 py-2.5 text-sm font-medium text-accent"
             >
               <Download className="size-4" />
-              Download résumé
+              {t.header.downloadResume}
             </a>
           </div>
         </nav>

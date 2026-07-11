@@ -1,10 +1,15 @@
+"use client";
+
 import { Section } from "@/components/section";
 import { Reveal } from "@/components/reveal";
-import { experience } from "@/data/resume";
+import { useLanguage } from "@/components/language-provider";
 
 export function Experience() {
+  const { t } = useLanguage();
+  const experience = t.experience;
+
   return (
-    <Section id="experience" index="02" title="Experience">
+    <Section id="experience" index="02" title={t.sections.experience}>
       <ol className="relative">
         {experience.map((job, i) => (
           <li key={`${job.company}-${job.period}`} className="relative pl-8 pb-10 last:pb-0">

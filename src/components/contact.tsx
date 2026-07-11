@@ -1,20 +1,24 @@
+"use client";
+
 import { Mail, MapPin } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
-import { profile } from "@/data/resume";
+import { useLanguage } from "@/components/language-provider";
 
 export function Contact() {
+  const { t } = useLanguage();
+  const { profile } = t;
+
   return (
     <section id="contact" className="scroll-mt-20 px-5 py-24 sm:px-8">
       <Reveal>
         <div className="mx-auto max-w-3xl rounded-3xl border border-border bg-surface px-6 py-14 text-center sm:px-10">
-          <p className="font-mono text-sm text-accent">05 · Contact</p>
+          <p className="font-mono text-sm text-accent">{t.contact.eyebrow}</p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Let&apos;s build something great
+            {t.contact.heading}
           </h2>
           <p className="mx-auto mt-4 max-w-md text-base text-muted">
-            Open to frontend and full-stack opportunities. The fastest way to
-            reach me is email.
+            {t.contact.subheading}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
